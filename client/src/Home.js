@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import SyncLoader from 'react-spinners/SyncLoader'
 import request from './services/api.request';
 import HomeResults from "./HomeResults";
+import { useGlobalState } from "./context/GlobalState";
 
 function Home({ setBook, setView, setLoggedIn, loggedIn }) {
+    const [state, dispatch] = useGlobalState();
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [clicked, setClicked] = useState(false);

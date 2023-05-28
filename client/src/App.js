@@ -11,6 +11,7 @@ import LogoutPage from "./LogoutPage";
 import BookRandomizer from "./BookRandomizer";
 import WeeklyBook from "./WeeklyBook";
 import BookShelfDetails from "./BookShelfDetails";
+import { GlobalProvider } from "./context/GlobalState";
 
 function App() {
   const [book, setBook] = useState(null);
@@ -18,7 +19,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   
   return (
-    <>
+    <GlobalProvider>
         <Router basename="/">
           <Routes>
             <Route path="/" element={<Home book={book} setBook={setBook} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
@@ -36,7 +37,7 @@ function App() {
             <Route path="/bookshelf-book-details" element={<BookShelfDetails shelfBook={shelfBook}/>} setLoggedIn={setLoggedIn} />
           </Routes>
         </Router>
-    </>
+    </ GlobalProvider>
   )
 }
 
